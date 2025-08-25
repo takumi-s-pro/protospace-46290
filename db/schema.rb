@@ -50,10 +50,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_21_084837) do
   end
 
   create_table "prototypes", charset: "utf8mb3", force: :cascade do |t|
-    t.string "title"
-    t.text "catch_copy"
-    t.text "concept"
-    t.bigint "user_id"
+    t.string "title", null: false
+    t.text "catch_copy", null: false
+    t.text "concept", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_prototypes_on_user_id"
@@ -79,4 +79,5 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_21_084837) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "prototypes"
   add_foreign_key "comments", "users"
+  add_foreign_key "prototypes", "users"
 end
